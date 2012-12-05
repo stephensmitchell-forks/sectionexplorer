@@ -1,0 +1,22 @@
+#wrap
+  %div.container
+    %h1
+      {{phoneProperties.AISC_Manual_Label}}
+    .span10
+      .row
+        .span5
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Property
+                %th Value
+            %tbody
+              %tr{"ng-repeat" => "master in master"}
+                %td
+                  / %su-label{:value => "{{master.name}}", :tooltip => "{{master.description}}"} 
+                  %a{"data-original-title" => '{{master.name}}',  "data-content" => '{{master.description}}',"ui-jq" => "popover"} {{master.name}}
+                %td
+                  {{master.value}}
+        .span5
+          %plotsection{:properties => '{{phoneProperties}}', :size => 500}
+       

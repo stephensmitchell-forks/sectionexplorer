@@ -1,0 +1,137 @@
+#wrap
+  %div.container
+    %h1
+      Section Explorer
+    .row
+      .span3
+        / %a{:title => "Easiest. Binding. Ever!", "ui-jq" => "tooltip"} Hover over me for static Tooltip
+        / Sidebar content
+        %label Section Name:
+        %input{"ng-model" => "query", :type => 'text'}
+        %label Flange Width Range Filter
+        #flangeWidthSlider{:max => "100", :min => "20", :slider => ""}
+        / %input{"ng-model" => "minbf", :type => 'text'}
+        / %label Flange Width Max
+        / %input{"ng-model" => "maxbf", :type => 'text'}
+        
+        {{minbf}}
+        {{maxbf}}
+        / %label Maximum Depth
+        / %input{"ng-model" => "maxdepth", :type => 'text'}
+        
+
+        
+        
+        / %label.checkbox
+        /   %input{:type => "checkbox","ng-model" => "showLabel", :checked => "checked"} Section Name
+
+        / %label.checkbox
+        /   %input{:type => "checkbox","ng-model" => "showFlangeWidth", :checked => "checked"}
+        /     %a{:title => "bf", "data-content" => 'Flange width, in',"ui-jq" => "popover"} Flange Width
+        / %label.checkbox
+        /   %input{:type => "checkbox","ng-model" => "showFlangeThickness", :checked => "checked"} 
+        /     %a{:title => "tf", "data-content" => 'Flange thickness, in',"ui-jq" => "popover"} Flange Thickness
+        / %label.checkbox
+        /   %input{:type => "checkbox","ng-model" => "showIx", :checked => "checked"} 
+        /     %a{:title => "Ix", "data-content" => 'Moment of <i>inertia</i> about the x axis',"ui-jq" => "popover"}
+        /       I
+        /       %span.subscript x
+        %accordion
+          %accordion-group{:title => "'Common'"}
+            %label.checkbox
+              %input{:type => "checkbox","ng-model" => "data.showWeight", :checked => "checked"}
+                %a{:title => "W",  "data-content" => 'Nominal weight, lb/ft',"ui-jq" => "popover"} Weight
+            %label.checkbox
+              %input{:type => "checkbox","ng-model" => "data.showDepth", :checked => "checked"}
+                %a{:title => "d",  "data-content" => 'Overall depth of member, or width of shorter leg for angles, or width of the outstanding legs oflong legs back-to-back double angles, or the width of the back-to-back legs of short legs back-to-back double angles, in',"ui-jq" => "popover"} Depth
+            %label.checkbox
+              %input{:type => "checkbox","ng-model" => "showFlangeWidth", :checked => "checked"}
+                %a{:title => "bf", "data-content" => 'Flange width, in',"ui-jq" => "popover"} Flange Width
+            %label.checkbox
+              %input{:type => "checkbox","ng-model" => "showFlangeThickness", :checked => "checked"} 
+                %a{:title => "tf", "data-content" => 'Flange thickness, in',"ui-jq" => "popover"} Flange Thickness
+            %label.checkbox
+              %input{:type => "checkbox","ng-model" => "data.showIx", :checked => "checked"} 
+                %a{:title => "Ix", "data-content" => 'Moment of <i>inertia</i> about the x axis',"ui-jq" => "popover"}
+                  I
+                  %span.subscript x
+          %accordion-group{:title => "'Detailing'"} This also has a one word title.
+          %accordion-group{:title => " 'Filters' "}
+            %a{"ng-click" => "resetDepthFilter()"} Reset filter
+            %label.radio
+              %input#optionsRadios1{:name => "optionsRadios", :type => "radio", "ng-model"=> "data.showDepthSlider", :value => "false"}
+                Show depth slider
+            %label.radio
+              %input#optionsRadios2{:name => "optionsRadios", :type => "radio", "ng-model"=> "data.showDepthSlider",:value => "true", :checked => ""}
+                Provide depth input
+            %p.muted
+              Minimum depth:
+              {{data.mindepth}}
+            %p.muted
+              Maximum depth:
+              {{data.maxdepth}}
+            %div.depth-slider{"ng-hide" => "data.showDepthSlider"}
+              %label Section Depth Range Filter
+              #depthSlider{:max => "100", :min => "20", :slider => ""} 
+
+            %div.depth-input-value{"ng-show" => "data.showDepthSlider"}
+              %label Section Depth Range Filter
+              %input{"ng-model" => "data.depthValue", :type => 'text', "ng-change"=>"change()"}
+
+      .span9
+        .row
+          .span8
+            #loading
+              .loading-div
+              / %img{:src => "/img/loading.gif"}
+        .row
+          .span9#section-type-buttons
+            .btn-group{"data-toggle" => "buttons-radio"}
+              %button.btn.active{:type => "button"} WF
+              %button.btn.disabled{:type => "button"} HSS
+              %button.btn.disabled{:type => "button"} Angle
+        .row
+          .span9
+            #section-table
+              %table.table.table-striped.table-bordered#section-table{"my-table" => ""}
+                %thead
+                  %tr
+                    %th
+                      %a{:href => "", "ng-click" => "predicate = 'AISC_Manual_Label'; reverse=!reverse"} Name
+                    %th{"ng-show" => "data.showWeight"}
+                      %a{:href => "", "ng-click" => "predicate = 'W'; reverse=!reverse"} Weight
+                    %th{"ng-show" => "data.showDepth"}
+                      %a{:href => "", "ng-click" => "predicate = 'd'; reverse=!reverse", :title => "d",  "data-content" => 'Overall depth of member, or width of shorter leg for angles, or width of the outstanding legs oflong legs back-to-back double angles, or the width of the back-to-back legs of short legs back-to-back double angles, in',"ui-jq" => "popover", "data-placement" => "top"} Depth
+                    %th{"ng-show" => "showFlangeWidth"}
+                      %a{:href => "", "ng-click" => "predicate = 'd'; reverse=!reverse"} 
+                        b
+                        %span.subscript f
+                    %th{"ng-show" => "showFlangeThickness"}
+                      %a{:href => "", "ng-click" => "predicate = 'd'; reverse=!reverse"} tf
+                    %th{"ng-show" => "data.showIx"}
+                      %a{:href => "", "ng-click" => "predicate = 'd'; reverse=!reverse"}
+                        I
+                        %span.subscript x
+                  %tbody
+                    %tr{"ng-repeat" => "phone in phones | filter:query | orderBy:predicate:reverse | minFlangeWidth:minbf | maxFlangeWidth:maxbf | maxDepth: data.maxdepth | minDepth: data.mindepth"}
+                      %td{"ng-show" => "showLabel"}
+                        %a{:href => "#/phones/{{phone.AISC_Manual_Label}}"} {{phone.AISC_Manual_Label}}
+                      %td{"ng-show" => "data.showWeight"}
+                        {{phone.W}}
+                      %td{"ng-show" => "data.showDepth"}
+                        {{phone.d}}
+                      %td{"ng-show" => "showFlangeWidth"}
+                        {{phone.bf}}
+                      %td{"ng-show" => "showFlangeThickness"}
+                        {{phone.tf}}
+                      %td{"ng-show" => "data.showIx"}
+                        {{phone.Ix}}
+                      %td
+                        %plotsection{:properties => '{{phone}}', :size => 50}
+  #push
+    #footer
+      .container
+        %p section count
+        {{(phones | filter:query| orderBy:predicate:reverse | minFlangeWidth:minbf | maxFlangeWidth:maxbf | maxDepth: data.maxdepth | minDepth: data.mindepth).length}}
+
+
