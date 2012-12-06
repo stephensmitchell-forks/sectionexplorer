@@ -8,7 +8,7 @@
 // });
 
 
-function PhoneListCtrl($scope, Phone) {
+function SectionListCtrl($scope, Phone) {
 
     $scope.phones = Phone.query(function (phones) {
         // console.log(phones[0])
@@ -124,7 +124,7 @@ $scope.change = function() {
 // PhoneListCtrl.$inject = ['$scope', '$http'];
 
 
-function PhoneDetailCtrl($scope, $routeParams, Phone) {
+function WDetailCtrl($scope, $routeParams, Phone) {
 
 
     $scope.phones = Phone.query(function (phones) {

@@ -6,12 +6,12 @@ angular.module('phonecat', ['filters', 'directives', 'phonecatServices', 'ui', '
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
     when('/phones', {
-        templateUrl: 'partials/phone-list.html',
-        controller: PhoneListCtrl
+        templateUrl: 'partials/section-list.html',
+        controller: SectionListCtrl
     }).
-    when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html',
-        controller: PhoneDetailCtrl
+    when('/W/:phoneId', {
+        templateUrl: 'partials/w-detail.html',
+        controller: WDetailCtrl
     }).
     otherwise({
         redirectTo: '/phones'

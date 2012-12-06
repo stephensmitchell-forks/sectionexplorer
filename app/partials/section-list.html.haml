@@ -115,7 +115,7 @@
                   %tbody
                     %tr{"ng-repeat" => "phone in phones | filter:query | orderBy:predicate:reverse | minFlangeWidth:minbf | maxFlangeWidth:maxbf | maxDepth: data.maxdepth | minDepth: data.mindepth"}
                       %td{"ng-show" => "showLabel"}
-                        %a{:href => "#/phones/{{phone.AISC_Manual_Label}}"} {{phone.AISC_Manual_Label}}
+                        %a{:href => "#/{{phone.Type}}/{{phone.AISC_Manual_Label}}"} {{phone.AISC_Manual_Label}}
                       %td{"ng-show" => "data.showWeight"}
                         {{phone.W}}
                       %td{"ng-show" => "data.showDepth"}
