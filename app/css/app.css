@@ -123,3 +123,7 @@ path {
         stroke-width: 1px;
         fill: none;
       }
+
+body {
+  padding-top: 40px;
+}
