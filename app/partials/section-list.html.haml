@@ -5,38 +5,14 @@
       Section Explorer
     .row
       .span3
-        / %a{:title => "Easiest. Binding. Ever!", "ui-jq" => "tooltip"} Hover over me for static Tooltip
-        / Sidebar content
         %label Section Name:
         %input{"ng-model" => "query", :type => 'text'}
         %label Flange Width Range Filter
         #flangeWidthSlider{:max => "100", :min => "20", :slider => ""}
-        / %input{"ng-model" => "minbf", :type => 'text'}
-        / %label Flange Width Max
-        / %input{"ng-model" => "maxbf", :type => 'text'}
         
         {{minbf}}
         {{maxbf}}
-        / %label Maximum Depth
-        / %input{"ng-model" => "maxdepth", :type => 'text'}
-        
 
-        
-        
-        / %label.checkbox
-        /   %input{:type => "checkbox","ng-model" => "showLabel", :checked => "checked"} Section Name
-
-        / %label.checkbox
-        /   %input{:type => "checkbox","ng-model" => "showFlangeWidth", :checked => "checked"}
-        /     %a{:title => "bf", "data-content" => 'Flange width, in',"ui-jq" => "popover"} Flange Width
-        / %label.checkbox
-        /   %input{:type => "checkbox","ng-model" => "showFlangeThickness", :checked => "checked"} 
-        /     %a{:title => "tf", "data-content" => 'Flange thickness, in',"ui-jq" => "popover"} Flange Thickness
-        / %label.checkbox
-        /   %input{:type => "checkbox","ng-model" => "showIx", :checked => "checked"} 
-        /     %a{:title => "Ix", "data-content" => 'Moment of <i>inertia</i> about the x axis',"ui-jq" => "popover"}
-        /       I
-        /       %span.subscript x
         %accordion
           %accordion-group{:title => "'Common'"}
             %label.checkbox
@@ -84,7 +60,6 @@
           .span8
             #loading
               .loading-div
-              / %img{:src => "/img/loading.gif"}
         .row
           .span9#section-type-buttons
             .btn-group{"data-toggle" => "buttons-radio"}
