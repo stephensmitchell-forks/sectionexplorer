@@ -1,0 +1,41 @@
+%accordion
+  %accordion-group{:title => "'Common'"}
+    %label.checkbox
+      %input{:type => "checkbox","ng-model" => "data.showWeight", :checked => "checked"}
+        %a{:title => "W",  "data-content" => 'Nominal weight, lb/ft',"ui-jq" => "popover"} Weight
+    %label.checkbox
+      %input{:type => "checkbox","ng-model" => "data.showDepth", :checked => "checked"}
+        %a{:title => "d",  "data-content" => 'Overall depth of member, or width of shorter leg for angles, or width of the outstanding legs oflong legs back-to-back double angles, or the width of the back-to-back legs of short legs back-to-back double angles, in',"ui-jq" => "popover"} Depth
+    %label.checkbox
+      %input{:type => "checkbox","ng-model" => "showFlangeWidth", :checked => "checked"}
+        %a{:title => "bf", "data-content" => 'Flange width, in',"ui-jq" => "popover"} Flange Width
+    %label.checkbox
+      %input{:type => "checkbox","ng-model" => "showFlangeThickness", :checked => "checked"} 
+        %a{:title => "tf", "data-content" => 'Flange thickness, in',"ui-jq" => "popover"} Flange Thickness
+    %label.checkbox
+      %input{:type => "checkbox","ng-model" => "data.showIx", :checked => "checked"} 
+        %a{:title => "Ix", "data-content" => 'Moment of <i>inertia</i> about the x axis',"ui-jq" => "popover"}
+          I
+          %span.subscript x
+  %accordion-group{:title => "'Detailing'"} This also has a one word title.
+  %accordion-group{:title => " 'Filters' "}
+    %a{"ng-click" => "resetDepthFilter()"} Reset filter
+    %label.radio
+      %input#optionsRadios1{:name => "optionsRadios", :type => "radio", "ng-model"=> "data.showDepthSlider", :value => "false"}
+        Show depth slider
+    %label.radio
+      %input#optionsRadios2{:name => "optionsRadios", :type => "radio", "ng-model"=> "data.showDepthSlider",:value => "true", :checked => ""}
+        Provide depth input
+    %p.muted
+      Minimum depth:
+      {{data.mindepth}}
+    %p.muted
+      Maximum depth:
+      {{data.maxdepth}}
+    %div.depth-slider{"ng-hide" => "data.showDepthSlider"}
+      %label Section Depth Range Filter
+      #depthSlider{:max => "100", :min => "20", :slider => ""} 
+
+    %div.depth-input-value{"ng-show" => "data.showDepthSlider"}
+      %label Section Depth Range Filter
+      %input{"ng-model" => "data.depthValue", :type => 'text', "ng-change"=>"change()"}
