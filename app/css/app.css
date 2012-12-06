@@ -127,3 +127,20 @@ path {
 body {
   padding-top: 40px;
 }
+
+#section-name a{
+  vertical-align: middle!important;
+}
+
+#section-name {
+  height: 60px;
+  }
+
+.table th,
+.table td {
+/*  padding: 8px;
+  line-height: 20px;
+  text-align: left;*/
+  vertical-align: middle!important;
+  /*border-top: 1px solid #dddddd;*/
+}

@@ -150,92 +150,97 @@ angular.module('directives', [])
                     // http://jsfiddle.net/Wexcode/CrDUy/
 
 
-                    var topFlangePath = [{
-                        x: (bf / 2 - tw / 2 - k1Num),
-                        y: tf
-                    }, {
-                        x: 0,
-                        y: tf
-                    },
+                    var topFlangePath = [
+                        {
+                            x: (bf / 2 - tw / 2 - k1Num),
+                            y: tf
+                        }, {
+                            x: 0,
+                            y: tf
+                        },
 
-                    {
-                        x: 0,
-                        y: 0
-                    }, // start in upper left corner, go clockwise around section
-                    {
-                        x: bf,
-                        y: 0
-                    }, // go to the positive x direction by width of flange, bf
-                    {
-                        x: bf,
-                        y: tf
-                    }, //go negative y direction by flange thickness, tf
-                    {
-                        x: (bf / 2 + tw / 2 + k1Num),
-                        y: tf
-                    }, // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
+                        {
+                            x: 0,
+                            y: 0
+                        }, // start in upper left corner, go clockwise around section
+                        {
+                            x: bf,
+                            y: 0
+                        }, // go to the positive x direction by width of flange, bf
+                        {
+                            x: bf,
+                            y: tf
+                        }, //go negative y direction by flange thickness, tf
+                        {
+                            x: (bf / 2 + tw / 2 + k1Num),
+                            y: tf
+                        } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
                     ]
 
-                    var bottomFlangePath = [{
-                        x: (bf / 2 - tw / 2 - k1Num),
-                        y: d - tf
-                    }, {
-                        x: 0,
-                        y: d - tf
-                    },
+                    var bottomFlangePath = [
+                        {
+                            x: (bf / 2 - tw / 2 - k1Num),
+                            y: d - tf
+                        }, {
+                            x: 0,
+                            y: d - tf
+                        },
 
-                    {
-                        x: 0,
-                        y: d
-                    }, // start in upper left corner, go clockwise around section
-                    {
-                        x: bf,
-                        y: d
-                    }, // go to the positive x direction by width of flange, bf
-                    {
-                        x: bf,
-                        y: d - tf
-                    }, //go negative y direction by flange thickness, tf
-                    {
-                        x: (bf / 2 + tw / 2 + k1Num),
-                        y: d - tf
-                    } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
+                        {
+                            x: 0,
+                            y: d
+                        }, // start in upper left corner, go clockwise around section
+                        {
+                            x: bf,
+                            y: d
+                        }, // go to the positive x direction by width of flange, bf
+                        {
+                            x: bf,
+                            y: d - tf
+                        }, //go negative y direction by flange thickness, tf
+                        {
+                            x: (bf / 2 + tw / 2 + k1Num),
+                            y: d - tf
+                        } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
                     ]
 
-                    var webPathLeft = [{
-                        x: (bf / 2 - tw / 2),
-                        y: k
-                    }, {
-                        x: (bf / 2 - tw / 2),
-                        y: d - k
-                    }
+                    var webPathLeft = [
+                        {
+                            x: (bf / 2 - tw / 2),
+                            y: k
+                        }, {
+                            x: (bf / 2 - tw / 2),
+                            y: d - k
+                        }
+                        // {x: 0, y: 0}
+
+                    ];
+
+                    var webPathRight = [
+                        {
+                            x: (bf / 2 + tw / 2),
+                            y: k
+                        }, {
+                            x: (bf / 2 + tw / 2),
+                            y: d - k
+                        }
                     // {x: 0, y: 0}
 
                     ];
 
-                    var webPathRight = [{
-                        x: (bf / 2 + tw / 2),
-                        y: k
-                    }, {
-                        x: (bf / 2 + tw / 2),
-                        y: d - k
-                    }
-                    // {x: 0, y: 0}
-
-                    ];
 
 
-
-                    var filletPathTopLeft = [{
-                        x: (bf / 2 - tw / 2 - k1Num),
-                        y: tf
-                    }, {
-                        x: (bf / 2 - tw / 2),
-                        y: tf
-                    }, {
-                        x: (bf / 2 - tw / 2),
-                        y: k
-                    }
+                    var filletPathTopLeft = [
+                        {
+                            x: (bf / 2 - tw / 2 - k1Num),
+                            y: tf
+                        }, {
+                            x: (bf / 2 - tw / 2),
+                            y: tf
+                        }, {
+                            x: (bf / 2 - tw / 2),
+                            y: k
+                        }
 
                     ];
 
@@ -421,6 +426,13 @@ angular.module('directives', [])
                         .attr("d", function (d) {
                         return filletTopRight.tension(d)(filletPathTopRight)
                     })
+
+                    var xOffset = (attrs.size - xScale(bf))/2
+                    var yOffset = (attrs.size - yScale(d))/2
+
+                    graph.selectAll('path')
+                    .attr("transform", "translate("+ xOffset + "," + yOffset+ ")");
+
 
 
 

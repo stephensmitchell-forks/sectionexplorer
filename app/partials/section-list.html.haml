@@ -50,8 +50,9 @@
                         %span.subscript x
                   %tbody
                     %tr{"ng-repeat" => "phone in phones | filter:query | orderBy:predicate:reverse | minFlangeWidth:minbf | maxFlangeWidth:maxbf | maxDepth: data.maxdepth | minDepth: data.mindepth"}
-                      %td{"ng-show" => "showLabel"}
+                      %td#section-name{"ng-show" => "showLabel"}
                         %a{:href => "#/{{phone.Type}}/{{phone.AISC_Manual_Label}}"} {{phone.AISC_Manual_Label}}
+                        %plotsection{:properties => '{{phone}}', :size => 50}
                       %td{"ng-show" => "data.showWeight"}
                         {{phone.W}}
                       %td{"ng-show" => "data.showDepth"}
@@ -62,8 +63,7 @@
                         {{phone.tf}}
                       %td{"ng-show" => "data.showIx"}
                         {{phone.Ix}}
-                      %td
-                        %plotsection{:properties => '{{phone}}', :size => 50}
+                        
   #push
     #footer
       .container
