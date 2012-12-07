@@ -149,3 +149,7 @@ body {
   vertical-align: middle;
 }
 
+g path {
+  stroke: #696969;
+}
+

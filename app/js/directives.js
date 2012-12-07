@@ -482,13 +482,20 @@ angular.module('directives', [])
                     //     .attr;
 
             if (attrs.display == "individual") {
+                if ( bf > d) { 
 
 var x = d3.scale.linear().range([0, xScale(bf)]).domain([0,Math.round(bf)]),
-    xAxis = d3.svg.axis().scale(x).tickSize(bf).tickSubdivide(true)
+    xAxis = d3.svg.axis().scale(x).tickSize(5)
+    // .tickSubdivide(true)
+}  else {
+    var x = d3.scale.linear().range([0, Math.round(xScale(d))]).domain([0,Math.round(d)]),
+    xAxis = d3.svg.axis().scale(x).tickSize(5)
+    // .tickSubdivide(true)
+}
  graph.append("svg:g")
       .attr("class", "x axis")
       .attr("transform", "translate(50," + (yScale(d) + 75) + ")")
-      .attr("stroke", "black")
+      .attr("stroke", "#696969")
       .call(xAxis);
 
 
