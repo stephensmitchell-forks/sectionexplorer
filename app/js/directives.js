@@ -488,7 +488,7 @@ var x = d3.scale.linear().range([0, xScale(bf)]).domain([0,Math.round(bf)]),
     xAxis = d3.svg.axis().scale(x).tickSize(5)
     // .tickSubdivide(true)
 }  else {
-    var x = d3.scale.linear().range([0, Math.round(xScale(d))]).domain([0,Math.round(d)]),
+    var x = d3.scale.linear().range([0, Math.round(yScale(d))]).domain([0,Math.round(d)]),
     xAxis = d3.svg.axis().scale(x).tickSize(5)
     // .tickSubdivide(true)
 }
