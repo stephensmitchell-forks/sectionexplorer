@@ -86,7 +86,8 @@ angular.module('directives', [])
         restrict: 'E',
         scope: {
             properties: '@properties',
-            size: '@size'
+            size: '@size',
+            display: '@display'
         },
         link: function (scope, element, attrs) {
             scope.$watch(function () {
@@ -142,11 +143,30 @@ angular.module('directives', [])
                     // console.log( k1Num)
                     var k1Num = k1ToNum(sectionProperties.k1)
                     // console.log(k1Num)
-                    var graph = d3.select(element[0]).append("svg:svg").attr("width", attrs.size).attr("height", attrs.size);
+
                     // X scale will fit values from 0-10 within pixels 0-100
+                    if (attrs.display == "individual") { 
+                        var graph = d3.select(element[0])
+                            .append("svg:svg")
+                            .attr("width", parseInt(attrs.size)+50)
+                            .attr("height", parseInt(attrs.size)+50);
+                    var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d  - 50]);
+                    // Y scale will fit values from 0-10 within pixels 0-100
+                    var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 50]);
+
+                } else { 
+
+                                            var graph = d3.select(element[0])
+                            .append("svg:svg")
+                            .attr("width", parseInt(attrs.size))
+                            .attr("height", parseInt(attrs.size));
                     var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d *(d/44)]);
                     // Y scale will fit values from 0-10 within pixels 0-100
                     var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size*(d/44)]);
+
+
+
+                }
                     // http://jsfiddle.net/Wexcode/CrDUy/
 
 
