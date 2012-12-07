@@ -104,7 +104,7 @@ angular.module('directives', [])
                     // it adds all these pieces up and returns the k1 numberical value
                     if (attrs.properties) {
                         var k1Split = k1.split(" ")
-                        console.log(k1Split)
+                        // console.log(k1Split)
                         var k1Num = 0;
                         for (var i = 0; i < k1Split.length; i++) {
 
@@ -150,9 +150,9 @@ angular.module('directives', [])
                             .append("svg:svg")
                             .attr("width", parseInt(attrs.size)+50)
                             .attr("height", parseInt(attrs.size)+50);
-                    var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d  - 50]);
+                    var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d  - 100]);
                     // Y scale will fit values from 0-10 within pixels 0-100
-                    var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 50]);
+                    var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
 
                 } else { 
 
@@ -455,7 +455,49 @@ angular.module('directives', [])
 
 
 
+                    var scaleBarPath = [
+                        {
+                            x: 0,
+                            y: d 
+                        }, {
+                            x: (bf / 2 - tw / 2),
+                            y: d
+                        }
+                        // {x: 0, y: 0}
 
+                    ];
+
+
+
+                    // var scaleBar = d3.svg.line()
+                    //     .x(function (d) {
+                    //     return xScale(d.x) + 50;
+                    // })
+                    //     .y(function (d) {
+                    //     return yScale(d.y) + 125;
+                    // })
+                    //     .interpolate("linear");
+                    // graph.append("svg:path")
+                    //     .attr("d", scaleBar(scaleBarPath))
+                    //     .attr;
+
+            if (attrs.display == "individual") {
+
+var x = d3.scale.linear().range([0, xScale(bf)]).domain([0,Math.round(bf)]),
+    xAxis = d3.svg.axis().scale(x).tickSize(bf).tickSubdivide(true)
+ graph.append("svg:g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(50," + (yScale(d) + 75) + ")")
+      .attr("stroke", "black")
+      .call(xAxis);
+
+
+graph.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (50+15) +","+(yScale(d) + 120)+")")  // text is drawn off the screen top left, move down and out and rotate
+            .text("inches");
+
+        }
 
 
 
