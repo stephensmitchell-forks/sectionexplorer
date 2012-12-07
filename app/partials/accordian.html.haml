@@ -18,7 +18,7 @@
           I
           %span.subscript x
   %accordion-group{:title => "'Detailing'"} This also has a one word title.
-  %accordion-group{:title => " 'Filters' "}
+  %accordion-group{:title => " 'Depth Filter' "}
     %a{"ng-click" => "resetDepthFilter()"} Reset filter
     %label.radio
       %input#optionsRadios1{:name => "optionsRadios", :type => "radio", "ng-model"=> "data.showDepthSlider", :value => "false"}
@@ -39,3 +39,10 @@
     %div.depth-input-value{"ng-show" => "data.showDepthSlider"}
       %label Section Depth Range Filter
       %input{"ng-model" => "data.depthValue", :type => 'text', "ng-change"=>"change()"}
+  %accordion-group{:title => " 'Flange Width Filter' "}
+    %div.flange-width-slider{"ng-hide" => "data.showFlangeWidthSlider"}
+      %label Flange Width Range Filter
+      #flangeWidthSlider{:max => "100", :min => "20", :slider => ""}
+      
+      {{minbf}}
+      {{maxbf}}
