@@ -150,7 +150,7 @@ angular.module('directives', [])
                             .append("svg:svg")
                             .attr("width", parseInt(attrs.size)+50)
                             .attr("height", parseInt(attrs.size)+50);
-                    var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d  - 100]);
+                    var xScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
                     // Y scale will fit values from 0-10 within pixels 0-100
                     var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
 

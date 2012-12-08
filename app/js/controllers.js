@@ -21,6 +21,7 @@ function SectionListCtrl($scope, Phone) {
         //     console.log(phones[0].keys);
         //     // return arr;
         $scope.sectionProperties = [];
+
         // many of the values in the json file are null, i.e. for a wf, D/t does not make sense therefore
         // it is null, I skip over these and do not push them to the properties array.
         var j = 0;
@@ -32,6 +33,7 @@ function SectionListCtrl($scope, Phone) {
             // console.log(val);
             // console.log(i)
             $scope.sectionProperties[j] = i;
+
             j++;
 
             // for(var j in val){
@@ -43,13 +45,22 @@ function SectionListCtrl($scope, Phone) {
             // }
 
         }
-        console.log($scope.sectionProperties)
+
+
+
 
     });
 
+$scope.sectionNames = Phone.query(function (phones) {
 
 
+       var k;
+       for (k = 0; k < phones.length; ++k) {
+        $scope.sectionNames[k] = phones[k].AISC_Manual_Label;
 
+
+       }
+   });
 
 
 
@@ -155,6 +166,15 @@ function WDetailCtrl($scope, $routeParams, Phone) {
 
 
         }
+
+       var k;
+       $scope.sectionNames = []
+       for (k = 0; k < $scope.phones.length; ++k) {
+        $scope.sectionNames[k] = $scope.phones[k].AISC_Manual_Label;
+
+
+       }
+
 
 
   $scope.propertyDefinitions = {

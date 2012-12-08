@@ -3,7 +3,7 @@
     .container
       %a.brand{:href => "/#/sections"} Section Explorer
       %form.navbar-search.pull-right
-        %input.search-query{:type => "text", :placeholder => "search sections", "data-provide" =>"typeahead"}
+        %input.search-query{:type => "text", :placeholder => "search sections", "data-provide" =>"typeahead", "data-source" => '{{sectionNames}}'}
         / %button.btn{:type => "submit"} Submit
       %ul.nav.pull-right
         %li
