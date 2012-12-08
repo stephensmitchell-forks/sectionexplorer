@@ -179,7 +179,7 @@ function WDetailCtrl($scope, $routeParams, Phone) {
 
   $scope.propertyDefinitions = {
         A: "cross sectional area, in^2",
-        AISC_Manual_Label: "the shape designation as seen in the AISC Steel Construction Manual, 14th Edition.  The exception to this is the designation for double angles. There is a separate listing (row) for each back-to-back spacing and configuration. Therefore, the shape designation reflects these two variables. The listings for double angles follow the convention specified in the AISC Naming Convention for Structural Steel Products for Use in Electronic Data Interchange (EDI), June 25, 2001.",
+        AISC_Manual_Label: "the shape designation as seen in the AISC Steel Construction Manual, 14th Edition.",
         Cw: "Warping constant, in.^6",
         Ix: "Moment of inertia about the x-axis, in.^4",
         Iy: "Moment of inertia about the y-axis, in.^4",
