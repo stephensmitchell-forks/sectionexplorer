@@ -145,122 +145,117 @@ angular.module('directives', [])
                     // console.log(k1Num)
 
                     // X scale will fit values from 0-10 within pixels 0-100
-                    if (attrs.display == "individual") { 
+                    if (attrs.display == "individual") {
                         var graph = d3.select(element[0])
                             .append("svg:svg")
-                            .attr("width", parseInt(attrs.size)+50)
-                            .attr("height", parseInt(attrs.size)+50);
-                    var xScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
-                    // Y scale will fit values from 0-10 within pixels 0-100
-                    var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
+                            .attr("width", parseInt(attrs.size) + 50)
+                            .attr("height", parseInt(attrs.size) + 50);
+                        var xScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
+                        // Y scale will fit values from 0-10 within pixels 0-100
+                        var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size - 100]);
 
-                } else { 
+                    } else {
 
-                                            var graph = d3.select(element[0])
+                        var graph = d3.select(element[0])
                             .append("svg:svg")
                             .attr("width", parseInt(attrs.size))
                             .attr("height", parseInt(attrs.size));
-                    var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d *(d/44)]);
-                    // Y scale will fit values from 0-10 within pixels 0-100
-                    var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size*(d/44)]);
+                        var xScale = d3.scale.linear().domain([0, bf]).range([0, attrs.size * bf / d * (d / 44)]);
+                        // Y scale will fit values from 0-10 within pixels 0-100
+                        var yScale = d3.scale.linear().domain([0, d]).range([0, attrs.size * (d / 44)]);
 
 
 
-                }
+                    }
                     // http://jsfiddle.net/Wexcode/CrDUy/
 
 
-                    var topFlangePath = [
-                        {
-                            x: (bf / 2 - tw / 2 - k1Num),
-                            y: tf
-                        }, {
-                            x: 0,
-                            y: tf
-                        },
+                    var topFlangePath = [{
+                        x: (bf / 2 - tw / 2 - k1Num),
+                        y: tf
+                    }, {
+                        x: 0,
+                        y: tf
+                    },
 
-                        {
-                            x: 0,
-                            y: 0
-                        }, // start in upper left corner, go clockwise around section
-                        {
-                            x: bf,
-                            y: 0
-                        }, // go to the positive x direction by width of flange, bf
-                        {
-                            x: bf,
-                            y: tf
-                        }, //go negative y direction by flange thickness, tf
-                        {
-                            x: (bf / 2 + tw / 2 + k1Num),
-                            y: tf
-                        } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
+                    {
+                        x: 0,
+                        y: 0
+                    }, // start in upper left corner, go clockwise around section
+                    {
+                        x: bf,
+                        y: 0
+                    }, // go to the positive x direction by width of flange, bf
+                    {
+                        x: bf,
+                        y: tf
+                    }, //go negative y direction by flange thickness, tf
+                    {
+                        x: (bf / 2 + tw / 2 + k1Num),
+                        y: tf
+                    } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
                     ]
 
-                    var bottomFlangePath = [
-                        {
-                            x: (bf / 2 - tw / 2 - k1Num),
-                            y: d - tf
-                        }, {
-                            x: 0,
-                            y: d - tf
-                        },
+                    var bottomFlangePath = [{
+                        x: (bf / 2 - tw / 2 - k1Num),
+                        y: d - tf
+                    }, {
+                        x: 0,
+                        y: d - tf
+                    },
 
-                        {
-                            x: 0,
-                            y: d
-                        }, // start in upper left corner, go clockwise around section
-                        {
-                            x: bf,
-                            y: d
-                        }, // go to the positive x direction by width of flange, bf
-                        {
-                            x: bf,
-                            y: d - tf
-                        }, //go negative y direction by flange thickness, tf
-                        {
-                            x: (bf / 2 + tw / 2 + k1Num),
-                            y: d - tf
-                        } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
+                    {
+                        x: 0,
+                        y: d
+                    }, // start in upper left corner, go clockwise around section
+                    {
+                        x: bf,
+                        y: d
+                    }, // go to the positive x direction by width of flange, bf
+                    {
+                        x: bf,
+                        y: d - tf
+                    }, //go negative y direction by flange thickness, tf
+                    {
+                        x: (bf / 2 + tw / 2 + k1Num),
+                        y: d - tf
+                    } // go negative x direction by width of flange /2  - thickness of web / 2, bf/2- tw/2
                     ]
 
-                    var webPathLeft = [
-                        {
-                            x: (bf / 2 - tw / 2),
-                            y: k
-                        }, {
-                            x: (bf / 2 - tw / 2),
-                            y: d - k
-                        }
-                        // {x: 0, y: 0}
+                    var webPathLeft = [{
+                        x: (bf / 2 - tw / 2),
+                        y: k
+                    }, {
+                        x: (bf / 2 - tw / 2),
+                        y: d - k
+                    }
+                    // {x: 0, y: 0}
 
                     ];
 
-                    var webPathRight = [
-                        {
-                            x: (bf / 2 + tw / 2),
-                            y: k
-                        }, {
-                            x: (bf / 2 + tw / 2),
-                            y: d - k
-                        }
+                    var webPathRight = [{
+                        x: (bf / 2 + tw / 2),
+                        y: k
+                    }, {
+                        x: (bf / 2 + tw / 2),
+                        y: d - k
+                    }
                     // {x: 0, y: 0}
 
                     ];
 
 
 
-                    var filletPathTopLeft = [
-                        {
-                            x: (bf / 2 - tw / 2 - k1Num),
-                            y: tf
-                        }, {
-                            x: (bf / 2 - tw / 2),
-                            y: tf
-                        }, {
-                            x: (bf / 2 - tw / 2),
-                            y: k
-                        }
+                    var filletPathTopLeft = [{
+                        x: (bf / 2 - tw / 2 - k1Num),
+                        y: tf
+                    }, {
+                        x: (bf / 2 - tw / 2),
+                        y: tf
+                    }, {
+                        x: (bf / 2 - tw / 2),
+                        y: k
+                    }
 
                     ];
 
@@ -441,29 +436,27 @@ angular.module('directives', [])
                     });
 
 
-                    graph
-                    .append("svg:path")
+                    graph.append("svg:path")
                         .attr("d", function (d) {
                         return filletTopRight.tension(d)(filletPathTopRight)
                     })
 
-                    var xOffset = (attrs.size - xScale(bf))/2
-                    var yOffset = (attrs.size - yScale(d))/2
+                    var xOffset = (attrs.size - xScale(bf)) / 2
+                    var yOffset = (attrs.size - yScale(d)) / 2
 
                     graph.selectAll('path')
-                    .attr("transform", "translate("+ xOffset + "," + yOffset+ ")");
+                        .attr("transform", "translate(" + xOffset + "," + yOffset + ")");
 
 
 
-                    var scaleBarPath = [
-                        {
-                            x: 0,
-                            y: d 
-                        }, {
-                            x: (bf / 2 - tw / 2),
-                            y: d
-                        }
-                        // {x: 0, y: 0}
+                    var scaleBarPath = [{
+                        x: 0,
+                        y: d
+                    }, {
+                        x: (bf / 2 - tw / 2),
+                        y: d
+                    }
+                    // {x: 0, y: 0}
 
                     ];
 
@@ -481,30 +474,30 @@ angular.module('directives', [])
                     //     .attr("d", scaleBar(scaleBarPath))
                     //     .attr;
 
-            if (attrs.display == "individual") {
-                if ( bf > d) { 
+                    if (attrs.display == "individual") {
+                        if (bf > d) {
 
-var x = d3.scale.linear().range([0, xScale(bf)]).domain([0,Math.round(bf)]),
-    xAxis = d3.svg.axis().scale(x).tickSize(5)
-    // .tickSubdivide(true)
-}  else {
-    var x = d3.scale.linear().range([0, Math.round(yScale(d))]).domain([0,Math.round(d)]),
-    xAxis = d3.svg.axis().scale(x).tickSize(5)
-    // .tickSubdivide(true)
-}
- graph.append("svg:g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(50," + (yScale(d) + 75) + ")")
-      .attr("stroke", "#696969")
-      .call(xAxis);
+                            var x = d3.scale.linear().range([0, xScale(bf)]).domain([0, Math.round(bf)]),
+                                xAxis = d3.svg.axis().scale(x).tickSize(5)
+                                // .tickSubdivide(true)
+                        } else {
+                            var x = d3.scale.linear().range([0, Math.round(yScale(d))]).domain([0, Math.round(d)]),
+                                xAxis = d3.svg.axis().scale(x).tickSize(5)
+                                // .tickSubdivide(true)
+                        }
+                        graph.append("svg:g")
+                            .attr("class", "x axis")
+                            .attr("transform", "translate(50," + (yScale(d) + 75) + ")")
+                            .attr("stroke", "#696969")
+                            .call(xAxis);
 
 
-graph.append("text")
-            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-            .attr("transform", "translate("+ (50+15) +","+(yScale(d) + 120)+")")  // text is drawn off the screen top left, move down and out and rotate
-            .text("inches");
+                        graph.append("text")
+                            .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
+                        .attr("transform", "translate(" + (50 + 15) + "," + (yScale(d) + 120) + ")") // text is drawn off the screen top left, move down and out and rotate
+                        .text("inches");
 
-        }
+                    }
 
 
 
