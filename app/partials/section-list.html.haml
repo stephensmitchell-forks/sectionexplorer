@@ -5,6 +5,8 @@
       Section Explorer
     .row
       .span3
+        %clearableinput
+        /{:model => "query"}
         %label Section Name:
         %input{"ng-model" => "query", :type => 'text'}
         %label Flange Width Range Filter

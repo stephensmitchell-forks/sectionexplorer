@@ -153,3 +153,26 @@ g path {
   stroke: #696969;
 }
 
+
+.clearable{
+    position:relative;
+}
+.data_field{
+    padding-right:17px; /* add space for the 'x' icon*/
+}
+span.icon_clear{
+    position:absolute;
+    right:10px;    
+    display:none;
+    
+    /* now go with the styling */
+    cursor:pointer;
+    font: bold 1em sans-serif;
+    color:#38468F;  
+    }
+    span.icon_clear:hover{
+        color:#f52;
+    }
+
+
+​

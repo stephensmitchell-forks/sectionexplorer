@@ -71,6 +71,43 @@ angular.module('directives', [])
         },
     }
 })
+    // http://jsfiddle.net/PJZmv/801/
+
+    .directive('clearableinput', function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            transclude: true,
+            scope: {
+                model: '@model'
+            },
+            template: '<span class="clearable"><input ng-model="query" type="text" class="data_field"  /><span class="icon_clear">x</span></span>',
+            
+            // <input ng-model="query" type="text" class="ng-pristine ng-valid">
+            //name="data_field" value=""
+            link: function (scope, element, attrs) {
+                $(document).on('propertychange keyup input paste', 'input.data_field', function(){
+                    var io = $(this).val().length ? 1 : 0;
+                    $(this).next('.icon_clear').stop().fadeTo(300,io);
+                    // console.log(element)
+                })
+                .on('click', '.icon_clear', function() {
+                    $(this).delay(300).fadeTo(300,0).prev('input').val('');
+                })
+            
+            },
+
+        }
+    })
+
+
+
+
+
+
+
+
+
     .directive('plotsection', function () {
     return {
         restrict: 'E',
