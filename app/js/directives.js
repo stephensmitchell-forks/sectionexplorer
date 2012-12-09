@@ -475,14 +475,8 @@ angular.module('directives', [])
                         .text("inches");
 
                     }
-
-
                 }
-
-
             });
-
         }
-
     }
 })
