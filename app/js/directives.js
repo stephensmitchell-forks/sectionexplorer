@@ -17,15 +17,10 @@ angular.module('directives', [])
                     values: [0, scope.maxbf],
                     slide: function (event, ui) {
                         if (event.target.id == "flangeWidthSlider") {
-                            // scope.hello = ui.value;  
-                            // $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                             scope.minbf = ui.values[0]
                             scope.maxbf = ui.values[1]
                         }
-                        // else if(event.target.id == "slider2"){
-                        //  // scope.goodbye = ui.value;
-                        //  scope.maxbf= ui.value
-                        // }
+
 
                         scope.$apply();
                     }
@@ -39,15 +34,10 @@ angular.module('directives', [])
                     values: [scope.data.mindepth, scope.data.maxdepth],
                     slide: function (event, ui) {
                         if (event.target.id == "depthSlider") {
-                            // scope.hello = ui.value;  
-                            // $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                             scope.data.mindepth = ui.values[0]
                             scope.data.maxdepth = ui.values[1]
                         }
-                        // else if(event.target.id == "slider2"){
-                        //  // scope.goodbye = ui.value;
-                        //  scope.maxbf= ui.value
-                        // }
+
 
                         scope.$apply();
                     }
@@ -456,34 +446,21 @@ angular.module('directives', [])
                         x: (bf / 2 - tw / 2),
                         y: d
                     }
-                    // {x: 0, y: 0}
 
                     ];
 
 
 
-                    // var scaleBar = d3.svg.line()
-                    //     .x(function (d) {
-                    //     return xScale(d.x) + 50;
-                    // })
-                    //     .y(function (d) {
-                    //     return yScale(d.y) + 125;
-                    // })
-                    //     .interpolate("linear");
-                    // graph.append("svg:path")
-                    //     .attr("d", scaleBar(scaleBarPath))
-                    //     .attr;
+
 
                     if (attrs.display == "individual") {
                         if (bf > d) {
 
                             var x = d3.scale.linear().range([0, xScale(bf)]).domain([0, Math.round(bf)]),
                                 xAxis = d3.svg.axis().scale(x).tickSize(5)
-                                // .tickSubdivide(true)
                         } else {
                             var x = d3.scale.linear().range([0, Math.round(yScale(d))]).domain([0, Math.round(d)]),
                                 xAxis = d3.svg.axis().scale(x).tickSize(5)
-                                // .tickSubdivide(true)
                         }
                         graph.append("svg:g")
                             .attr("class", "x axis")
@@ -500,88 +477,10 @@ angular.module('directives', [])
                     }
 
 
-
-                    //         var fillet = Math.sqrt( 
-                    //             Math.pow( 
-
-                    //                     ( bf/2- tw/2-k1Num) -
-                    //                     ( bf/2- tw/2)  
-                    //                 ,2) 
-                    //             + 
-                    //             Math.pow(
-                    //                 (tf-k)
-                    //                 ,2)
-
-                    //             );
-                    //         var data = d3.range(50).map(function(i) {
-                    //   return Math.sqrt( Math.pow(fillet,2) - Math.pow(i/50,2));
-                    // });
-                    // //       var data = d3.range(120).map(function(i) {
-                    // //   return .8 + Math.sin(i / 3 * Math.PI) / 6;
-                    // // });
-                    //     console.log(fillet)
-                    //         console.log(data)
-                    //         var radius = d3.scale.linear()
-                    //     .domain([0, 50])
-                    //     .range([0 , 500 ]);
-
-                    //     var angle = d3.scale.linear()
-                    //     .domain([0, data.length])
-                    //     .range([0, Math.PI/2]);
-
-
-                    // var filletTopLeft = d3.svg.line.radial()
-                    //     .interpolate("basis")
-                    //     .radius(radius)
-                    //     .angle(function(d, i) { return angle(i); });
-
-
-
-
-                    //     graph.append("svg:path")
-                    //     .datum(data)
-                    //     .attr("class", "line")
-                    //     .attr("d", filletTopLeft)
-                    //     // .attr("transform", "translate(" + ((radius ) + ( bf/2- tw/2-k1Num))+", " + ((radius) + tf)+")");
-                    //     .attr("transform", "translate("+ xScale(bf/2 - tw/2 - k1Num) + "," + yScale(fillet/2 + tf)+ ")");
-
                 }
 
 
-
-                // console.log(scope.value.Type)
             });
-
-
-            // // create an SVG element inside the #graph div that fills 100% of the div
-            // var graph = d3.select(element[0]).append("svg:svg").attr("width", "100%").attr("height", "100%");
-
-            // // create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
-            // var data = [3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9, 3, 6, 3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9, 3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9];
-
-            // // X scale will fit values from 0-10 within pixels 0-100
-            // var x = d3.scale.linear().domain([0, 10]).range([0, 50]);
-            // // Y scale will fit values from 0-10 within pixels 0-100
-            // var y = d3.scale.linear().domain([0, 10]).range([0, 30]);
-
-            // // create a line object that represents the SVN line we're creating
-            // var line = d3.svg.line()
-            //     // assign the X function to plot our line as we wish
-            //     .x(function(d,i) { 
-            //         // verbose logging to show what's actually being done
-            //         // console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
-            //         // return the X coordinate where we want to plot this datapoint
-            //         return x(i); 
-            //     })
-            //     .y(function(d) { 
-            //         // verbose logging to show what's actually being done
-            //         // console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
-            //         // return the Y coordinate where we want to plot this datapoint
-            //         return y(d); 
-            //     })
-
-            //     // display the line by appending an svg:path element with the data line we created above
-            //     graph.append("svg:path").attr("d", line(data));
 
         }
 
