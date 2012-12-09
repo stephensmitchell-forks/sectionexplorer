@@ -471,10 +471,11 @@ angular.module('directives', [])
 
                         graph.append("text")
                             .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
-                        .attr("transform", "translate(" + (50 + 15) + "," + (yScale(d) + 120) + ")") // text is drawn off the screen top left, move down and out and rotate
-                        .text("inches");
+                            .attr("transform", "translate(" + (50 + 15) + "," + (yScale(d) + 120) + ")") // text is drawn off the screen top left, move down and out and rotate
+                            .text("inches");
 
                     }
+
                 }
             });
         }
