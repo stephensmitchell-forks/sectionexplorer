@@ -17,6 +17,10 @@ config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'partials/w-detail.html',
         controller: WDetailCtrl
     }).
+        when('/about', {
+        templateUrl: 'partials/about.html'
+        // controller: QueryCtrl
+    }).
     otherwise({
         redirectTo: '/'
     });
