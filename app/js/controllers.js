@@ -7,6 +7,10 @@
 //   $scope.phones = data;
 // });
 
+function QueryCtrl($scope, Phone) {
+
+}
+
 
 function SectionListCtrl($scope, Phone) {
 

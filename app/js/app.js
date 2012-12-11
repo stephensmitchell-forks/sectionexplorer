@@ -5,8 +5,12 @@
 angular.module('phonecat', ['filters', 'directives', 'phonecatServices', 'ui', 'SharedServices','ui.bootstrap.accordion' ]).
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-    when('/sections', {
-        templateUrl: 'partials/section-list.html',
+    when('/', {
+        templateUrl: 'partials/query.html',
+        controller: QueryCtrl
+    }).
+    when('/W/all/', {
+        templateUrl: 'partials/sections-all.html',
         controller: SectionListCtrl
     }).
     when('/W/:phoneId', {
@@ -14,7 +18,7 @@ config(['$routeProvider', function ($routeProvider) {
         controller: WDetailCtrl
     }).
     otherwise({
-        redirectTo: '/sections'
+        redirectTo: '/'
     });
 }])
 

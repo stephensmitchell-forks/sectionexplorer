@@ -1,0 +1,11 @@
+= render 'nav.html.haml'
+#wrap
+  %div.container
+    %h1
+      Section Explorer
+    .row
+      .span12
+        / %clearableinput
+        /{:model => "query"}
+        %label Section Name:
+        %input{"ng-model" => "query", :type => 'text'}
