@@ -1,9 +1,10 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      %a.brand{:href => "/#/sections"} Section Explorer
+      %a.brand{:href => "/#/"} Section Explorer
       %form.navbar-search.pull-right
-        %input.search-query{:type => "text", :placeholder => "search sections", "data-provide" =>"typeahead", "data-source" => '{{sectionNames}}'}
+        %input.search-query#query-type-ahead{:type => "text", :placeholder => "search sections"}
+        /, "data-provide" =>"typeahead", "data-source" => '{{sectionNames}}'}
         / %button.btn{:type => "submit"} Submit
       %ul.nav.pull-right
         %li
