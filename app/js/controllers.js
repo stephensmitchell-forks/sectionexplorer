@@ -8,6 +8,29 @@
 // });
 
 function QueryCtrl($scope, Phone) {
+    document.getElementById('query-type-ahead').focus()
+
+    $scope.sectionNames = Phone.query(function (phones) {
+
+
+       var k;
+       for (k = 0; k < phones.length; ++k) {
+        $scope.sectionNames[k] = phones[k].AISC_Manual_Label;
+
+
+       }
+   });
+  $('#query-type-ahead').typeahead({
+    // note that "value" is the default setting for the property option
+    source: $scope.sectionNames,
+    updater: function(selection){
+        console.log("You selected: " + selection)
+        window.location = "/#/W/" + selection
+    }
+  })
+
+
+
 
 }
 
@@ -55,7 +78,7 @@ function SectionListCtrl($scope, Phone) {
 
     });
 
-$scope.sectionNames = Phone.query(function (phones) {
+    $scope.sectionNames = Phone.query(function (phones) {
 
 
        var k;
@@ -65,6 +88,15 @@ $scope.sectionNames = Phone.query(function (phones) {
 
        }
    });
+
+      $('#query-type-ahead').typeahead({
+        // note that "value" is the default setting for the property option
+        source: $scope.sectionNames,
+        updater: function(selection){
+            console.log("You selected: " + selection)
+            window.location = "/#/W/" + selection
+        }
+      })
 
 
 
@@ -178,6 +210,16 @@ function WDetailCtrl($scope, $routeParams, Phone) {
 
 
        }
+
+
+         $('#query-type-ahead').typeahead({
+    // note that "value" is the default setting for the property option
+    source: $scope.sectionNames,
+    updater: function(selection){
+        console.log("You selected: " + selection)
+        window.location = "/#/W/" + selection
+    }
+  })
 
 
 

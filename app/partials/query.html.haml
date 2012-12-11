@@ -1,11 +1,7 @@
-= render 'nav.html.haml'
+= render 'nav-index.html.haml'
 #wrap
   %div.container
-    %h1
-      Section Explorer
-    .row
-      .span12
-        / %clearableinput
-        /{:model => "query"}
-        %label Section Name:
-        %input{"ng-model" => "query", :type => 'text'}
+    %div.querybox
+      %input#query-type-ahead.input-block-level{:type => "text", :placeholder => "search wide flange sections"}
+      / , "data-items" => 10,"data-provide" =>"typeahead", "data-source" => '{{sectionNames}}'}
+
