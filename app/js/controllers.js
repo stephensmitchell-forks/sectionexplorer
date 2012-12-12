@@ -7,8 +7,8 @@
 //   $scope.phones = data;
 // });
 
-function QueryCtrl($scope, Phone) {
-    document.getElementById('query-type-ahead').focus()
+function AboutCtrl($scope, Phone) {
+
 
     $scope.sectionNames = Phone.query(function (phones) {
 
@@ -24,7 +24,39 @@ function QueryCtrl($scope, Phone) {
     // note that "value" is the default setting for the property option
     source: $scope.sectionNames,
     updater: function(selection){
-        console.log("You selected: " + selection)
+        window.location = "/#/W/" + selection
+    }
+  })
+
+
+
+
+}
+
+
+
+
+
+function QueryCtrl($scope, Phone) {
+
+
+    document.getElementById('query-type-ahead').focus()
+
+
+    $scope.sectionNames = Phone.query(function (phones) {
+
+
+       var k;
+       for (k = 0; k < phones.length; ++k) {
+        $scope.sectionNames[k] = phones[k].AISC_Manual_Label;
+
+
+       }
+   });
+  $('#query-type-ahead').typeahead({
+    // note that "value" is the default setting for the property option
+    source: $scope.sectionNames,
+    updater: function(selection){
         window.location = "/#/W/" + selection
     }
   })
