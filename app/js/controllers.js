@@ -7,8 +7,8 @@
 //   $scope.phones = data;
 // });
 
-function AboutCtrl($scope, Phone) {
-
+function AboutCtrl($scope, Phone, $window, $location) {
+    $window._gaq.push(['_trackPageview', $location.path()]);
 
     $scope.sectionNames = Phone.query(function (phones) {
 
@@ -37,8 +37,8 @@ function AboutCtrl($scope, Phone) {
 
 
 
-function QueryCtrl($scope, Phone) {
-
+function QueryCtrl($scope, Phone, $window, $location) {
+    $window._gaq.push(['_trackPageview', $location.path()]);
 
     document.getElementById('query-type-ahead').focus()
 
@@ -67,7 +67,8 @@ function QueryCtrl($scope, Phone) {
 }
 
 
-function SectionListCtrl($scope, Phone) {
+function SectionListCtrl($scope, Phone, $window, $location) {
+    $window._gaq.push(['_trackPageview', $location.path()]);
 
     $scope.phones = Phone.query(function (phones) {
         // console.log(phones[0])
@@ -203,9 +204,9 @@ $scope.change = function() {
 // PhoneListCtrl.$inject = ['$scope', '$http'];
 
 
-function WDetailCtrl($scope, $routeParams, Phone) {
+function WDetailCtrl($scope, $routeParams, Phone, $window, $location) {
 
-
+$window._gaq.push(['_trackPageview', $location.path()]);
     $scope.phones = Phone.query(function (phones) {
         $scope.sectionProperties = [];
 
