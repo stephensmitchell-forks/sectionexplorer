@@ -39,7 +39,7 @@ config(['$routeProvider', function ($routeProvider) {
         },
         popover: {
             // Tooltip options. This object will be used as the defaults
-            placement: 'right',
+            placement: 'top',
             trigger: 'hover',
             html: true
         }
